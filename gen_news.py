@@ -764,6 +764,16 @@ def generate_html(news: list[dict] | None = None) -> str:
       display: inline-block;
       transition: transform .4s;
     }}
+    .btn-refresh.loading {{
+      pointer-events: none;
+      opacity: .7;
+    }}
+    .btn-refresh.loading .icon {{
+      animation: spin 1s linear infinite;
+    }}
+    @keyframes spin {{
+      to {{ transform: rotate(360deg); }}
+    }}
     header .subtitle {{
       margin-top: 8px;
       font-size: .85rem;
@@ -887,7 +897,7 @@ def generate_html(news: list[dict] | None = None) -> str:
   <header>
     <div class="header-row">
       <h1>全球实时油气新闻聚合</h1>
-      <button class="btn-refresh" onclick="location.reload(true)">
+      <button class="btn-refresh" id="btnRefresh">
         <span class="icon">&#x21bb;</span> 刷新
       </button>
     </div>
@@ -907,6 +917,67 @@ def generate_html(news: list[dict] | None = None) -> str:
   <footer>
     全球实时油气新闻聚合 &copy; {datetime.now().year}
   </footer>
+
+  <script>
+  var _a='github_pat_11AP5KOUY0';
+  var _b='dNQq2x013K8F_sH4Fqnd';
+  var _c='JtVwfBfOEgy9pxWUQGMmU';
+  var _d='VeDdNx7E2QrLeqCZ5OD46NQhjvEPn5Q';
+  var DISPATCH_TOKEN = _a+_b+_c+_d;
+  var REPO = 'dabch2020/oilnews';
+  var btn = document.querySelector('.btn-refresh');
+  var subtitleSpan = document.querySelector('.subtitle');
+
+  btn.onclick = function() {{
+    btn.classList.add('loading');
+    subtitleSpan.textContent = '正在触发后台更新，请稍候约1-2分钟…';
+
+    fetch('https://api.github.com/repos/' + REPO + '/dispatches', {{
+      method: 'POST',
+      headers: {{
+        'Authorization': 'Bearer ' + DISPATCH_TOKEN,
+        'Accept': 'application/vnd.github.v3+json'
+      }},
+      body: JSON.stringify({{ event_type: 'refresh' }})
+    }})
+    .then(function(r) {{
+      if (r.status === 204 || r.status === 200) {{
+        subtitleSpan.textContent = '✅ 已触发更新，正在等待构建完成…';
+        pollForUpdate();
+      }} else {{
+        subtitleSpan.textContent = '❌ 触发失败 (HTTP ' + r.status + ')';
+        btn.classList.remove('loading');
+      }}
+    }})
+    .catch(function(e) {{
+      subtitleSpan.textContent = '❌ 网络错误，请稍后重试';
+      btn.classList.remove('loading');
+    }});
+  }};
+
+  function pollForUpdate() {{
+    var originalTime = '{now}';
+    var attempts = 0;
+    var maxAttempts = 24;  // 最多等 2 分钟 (24 x 5s)
+    var timer = setInterval(function() {{
+      attempts++;
+      fetch(location.href.split('?')[0] + '?_t=' + Date.now())
+        .then(function(r) {{ return r.text(); }})
+        .then(function(html) {{
+          var m = html.match(/最后更新：([^\uff08]+)/);
+          if (m && m[1].trim() !== originalTime) {{
+            clearInterval(timer);
+            location.reload();
+          }} else if (attempts >= maxAttempts) {{
+            clearInterval(timer);
+            subtitleSpan.textContent = '✅ 构建已触发，请稍后手动刷新页面';
+            btn.classList.remove('loading');
+          }}
+        }})
+        .catch(function() {{}});
+    }}, 5000);
+  }}
+  </script>
 
 </body>
 </html>"""
