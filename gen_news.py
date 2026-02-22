@@ -730,6 +730,39 @@ def generate_html(news: list[dict] | None = None) -> str:
       font-size: 1.9rem;
       font-weight: 700;
       letter-spacing: .08em;
+      display: inline;
+    }}
+    .header-row {{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }}
+    .btn-refresh {{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 18px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: #1b5e20;
+      background: #fff;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      box-shadow: 0 2px 6px rgba(0,0,0,.15);
+      white-space: nowrap;
+    }}
+    .btn-refresh:hover {{
+      background: #e8f5e9;
+    }}
+    .btn-refresh:active {{
+      transform: scale(.95);
+    }}
+    .btn-refresh .icon {{
+      display: inline-block;
+      transition: transform .4s;
     }}
     header .subtitle {{
       margin-top: 8px;
@@ -852,7 +885,12 @@ def generate_html(news: list[dict] | None = None) -> str:
 <body>
 
   <header>
-    <h1>全球实时油气新闻聚合</h1>
+    <div class="header-row">
+      <h1>全球实时油气新闻聚合</h1>
+      <button class="btn-refresh" onclick="location.reload(true)">
+        <span class="icon">&#x21bb;</span> 刷新
+      </button>
+    </div>
     <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：{now}（每小时自动刷新）</p>
   </header>
 
