@@ -1,0 +1,6 @@
+feedparser
+requests
+beautifulsoup4
+lxml
+deep-translator
+googlenewsdecoder

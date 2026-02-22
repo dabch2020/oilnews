@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>全球实时油气新闻聚合</title>
+  <style>
+    /* ── Reset & Base ───────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+                   system-ui, -apple-system, sans-serif;
+      background: #f0f2f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* ── Header ─────────────────────────────── */
+    header {
+      background: linear-gradient(135deg, #1b5e20 0%, #004d40 60%, #01579b 100%);
+      color: #fff;
+      padding: 32px 24px 22px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    }
+    header h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+    header .subtitle {
+      margin-top: 8px;
+      font-size: .85rem;
+      opacity: .85;
+    }
+
+    /* ── Sources bar ───────────────────────── */
+    .sources {
+      background: #fff;
+      padding: 14px 24px;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .sources .label {
+      font-size: .8rem;
+      color: #888;
+      margin-right: 8px;
+    }
+    .src-tag {
+      display: inline-block;
+      font-size: .75rem;
+      padding: 3px 10px;
+      margin: 3px 4px;
+      border-radius: 14px;
+      background: #e8f5e9;
+      color: #2e7d32;
+      text-decoration: none;
+      transition: background .15s;
+    }
+    .src-tag:hover {
+      background: #c8e6c9;
+    }
+
+    /* ── Container ──────────────────────────── */
+    .container {
+      max-width: 860px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+    .stats {
+      text-align: center;
+      font-size: .82rem;
+      color: #999;
+      margin-bottom: 16px;
+    }
+
+    /* ── Card ───────────────────────────────── */
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      transition: transform .18s, box-shadow .18s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,.1);
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: .73rem;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 12px;
+    }
+    .meta {
+      font-size: .76rem;
+      color: #999;
+    }
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .card-title a {
+      color: #222;
+      text-decoration: none;
+    }
+    .card-title a:hover {
+      color: #1b5e20;
+      text-decoration: underline;
+    }
+    .card-summary {
+      font-size: .9rem;
+      color: #555;
+    }
+
+    /* ── Empty state ───────────────────────── */
+    .empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: #aaa;
+      font-size: 1rem;
+    }
+
+    /* ── Footer ─────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 24px 16px;
+      font-size: .78rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      .card { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>全球实时油气新闻聚合</h1>
+    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-02-22 20:59（每小时自动刷新）</p>
+  </header>
+
+  <div class="sources">
+    <span class="label">数据来源：</span>
+    <a href="https://cnbc.com/energy" target="_blank" rel="noopener" class="src-tag">CNBC</a> <a href="https://bloomberg.com/energy" target="_blank" rel="noopener" class="src-tag">Bloomberg</a> <a href="https://spglobal.com/platts" target="_blank" rel="noopener" class="src-tag">S&amp;P Platts</a> <a href="https://ogj.com" target="_blank" rel="noopener" class="src-tag">OGJ</a> <a href="https://rigzone.com" target="_blank" rel="noopener" class="src-tag">Rigzone</a> <a href="https://oilprice.com" target="_blank" rel="noopener" class="src-tag">Oilprice</a> <a href="https://naturalgasintel.com" target="_blank" rel="noopener" class="src-tag">NGI</a> <a href="https://worldoil.com" target="_blank" rel="noopener" class="src-tag">World Oil</a> <a href="https://oilandgaspress.com/news-analysis/" target="_blank" rel="noopener" class="src-tag">OilGasPress</a> <a href="https://www.cls.cn" target="_blank" rel="noopener" class="src-tag">财联社</a>
+  </div>
+
+  <main class="container">
+    <p class="stats">共聚合 28 条新闻</p>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff3e0;color:#e65100">财经</span>
+        <span class="meta">财联社 · 2026-02-22 16:41</span>
+      </div>
+      <h3 class="card-title"><a href="https://api3.cls.cn/share/article/2292538?os=web&amp;sv=8.4.6&amp;app=CailianpressWeb" target="_blank" rel="noopener">财联社2月22日电，伊朗高级官员表示，伊朗不会将其石油和矿产资源控制权交给美国。</a></h3>
+      <p class="card-summary">财联社2月22日电，伊朗高级官员表示，伊朗不会将其石油和矿产资源控制权交给美国。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff3e0;color:#e65100">财经</span>
+        <span class="meta">财联社 · 2026-02-22 14:14</span>
+      </div>
+      <h3 class="card-title"><a href="https://api3.cls.cn/share/article/2292519?os=web&amp;sv=8.4.6&amp;app=CailianpressWeb" target="_blank" rel="noopener">欧尔班：匈牙利4月的选举是战争与和平抉择</a></h3>
+      <p class="card-summary">【欧尔班：匈牙利4月的选举是战争与和平抉择】财联社2月22日电，匈牙利总理欧尔班当地时间2月21日在一场竞选活动上表示，即将于4月举行的选举是战争与和平的抉择。如果反对派候选人上台可能会把国家拖入战争中。欧尔班同时指责，乌克兰为了加入欧盟，不想让现任匈牙利政府继续执政。他表示，除非乌克兰恢复对匈牙利的石油供应，否则欧盟的900亿欧元贷款“再过一百万年”他也不同意给乌克兰。匈牙利选举法规定，国会选举每四年举行一次。匈牙利国会选举将于今年4月12日举行。 (央视新闻)</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
+        <span class="meta">Oilprice · Sat, 21 Feb 2026 16:00:00 -0600</span>
+      </div>
+      <h3 class="card-title"><a href="https://oilprice.com/Energy/Natural-Gas/Petros-Policies-Are-Decimating-Colombias-Natural-Gas-Industry.html" target="_blank" rel="noopener">Petro&#x27;s Policies Are Decimating Colombia&#x27;s Natural Gas Industry</a></h3>
+      <p class="card-summary">饱受冲突蹂躏的哥伦比亚正面临着严重的能源危机。数十年的管理不善和不安全，加上哥伦比亚第一位左翼总统古斯塔沃·佩特罗对能源政策的彻底改变，正在对该国的天然气储量和生产造成严重破坏。这使得这个安第斯国家越来越依赖昂贵的天然气进口，同时威胁到哥伦比亚能源网的稳定性并面临严重能源短缺的风险。没有任何迹象表明...</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
+        <span class="meta">Oilprice · Sat, 21 Feb 2026 14:00:00 -0600</span>
+      </div>
+      <h3 class="card-title"><a href="https://oilprice.com/Energy/Coal/The-Last-Stand-for-King-Coal.html" target="_blank" rel="noopener">The Last Stand for King Coal</a></h3>
+      <p class="card-summary">在拜登政府花费数年时间增加美国可再生能源产能后，美国总统特朗普一直在推动回归化石燃料。自去年一月就职以来，特朗普已签署了几项行政命令，旨在扭转该国影响最深远的气候政策——《减少通货膨胀法案》，同时让化石燃料公司更容易增加石油和天然气的产量。然而，随着特朗普鼓励煤炭公司推迟关闭……</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e8f5e9;color:#2e7d32">行业</span>
+        <span class="meta">Rigzone · Sat, 21 Feb 2026 12:00:00 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.rigzone.com/news/wire/ypf_chief_readies_war_chest_for_shale_push-21-feb-2026-183039-article/?rss=true" target="_blank" rel="noopener">YPF Chief Readies War Chest for Shale Push</a></h3>
+      <p class="card-summary">即使今年油价下跌，YPF SA 仍会拨出资金，继续在快速增长的瓦卡穆尔塔盆地进行支出，因为自由主义者总统哈维尔·米雷 (Javier Milei) 精心挑选的管理层希望将这家国营公司打造成全球页岩明星。 “我们已经做好了准备，”首席执行官奥拉西奥·马林周三在布宜诺斯艾利斯接受采访时表示。 “我们的投资组合管理得很好，因此在低油价环境下我们不需要减少投资。我们的资本支出不会改变……</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fce4ec;color:#c62828">国际</span>
+        <span class="meta">CNBC · Sat, 21 Feb 2026 11:40:01 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.cnbc.com/2026/02/20/trump-says-hes-considering-limited-military-strike-against-iran.html" target="_blank" rel="noopener">Trump says he&#x27;s considering limited military strike against Iran</a></h3>
+      <p class="card-summary">石油市场最大的担忧是美国和伊朗之间的冲突可能导致霍尔木兹海峡石油流动长期中断。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e0f7fa;color:#00695c">天然气</span>
+        <span class="meta">NGI · Fri, 20 Feb 2026 22:26:01 +0000</span>
+      </div>
+      <h3 class="card-title"><a href="https://naturalgasintel.com/news/spot-prices-wrap-cash-gas-slides-as-western-selloff-offsets-cold-driven-gains/" target="_blank" rel="noopener">Spot Prices Wrap: Cash Gas Slides as Western Selloff Offsets Cold-Driven Gains</a></h3>
+      <p class="card-summary">周末的寒冷预测提高了主要消费地区周六至周一交付的天然气价格，但西部和德克萨斯州的变暖引发了大幅下跌，拉低了全国平均价格。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e8f5e9;color:#2e7d32">行业</span>
+        <span class="meta">Rigzone · Fri, 20 Feb 2026 20:50:35 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.rigzone.com/news/wire/oil_holds_near_sixmonth_high-20-feb-2026-183040-article/?rss=true" target="_blank" rel="noopener">Oil Holds Near Six-Month High</a></h3>
+      <p class="card-summary">美国总统唐纳德·特朗普表示，他正在考虑对伊朗进行有限的军事打击，军队正在中东集结，并警告德黑兰最多有 15 天的时间就其核计划达成协议，油价维持在六个月高点附近。西德克萨斯中质原油价格几乎没有变化，接近每桶 66 美元，周涨幅约为 5.6%。当被问及是否正在权衡对伊朗的军事力量以确保达成核协议时，特朗普周五表示，“我想我可以说我正在考虑这一点”，这引发了人们对潜在……的担忧。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e0f7fa;color:#00695c">天然气</span>
+        <span class="meta">NGI · Fri, 20 Feb 2026 20:25:44 +0000</span>
+      </div>
+      <h3 class="card-title"><a href="https://naturalgasintel.com/news/futures-settle-forecast-swings-trigger-hectic-natural-gas-trading-ahead-of-weekend/" target="_blank" rel="noopener">Futures Settle: Forecast Swings Trigger Hectic Natural Gas Trading Ahead of Weekend</a></h3>
+      <p class="card-summary">由于美国较冷的天气模型修正引发买盘，纽约商业交易所 3 月天然气期货周五尾盘窄幅波动后上涨。该合约本周仍较上周五下跌 19.6 美分，但仍回到 3.00 美元/MMBtu 的关键门槛之上。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e8f5e9;color:#2e7d32">行业</span>
+        <span class="meta">Rigzone · Fri, 20 Feb 2026 20:00:00 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.rigzone.com/news/wire/canadas_oil_sands_poised_for_mega_merger-20-feb-2026-183038-article/?rss=true" target="_blank" rel="noopener">Canada&#x27;s Oil Sands Poised for Mega Merger</a></h3>
+      <p class="card-summary">分析师表示，加拿大石油领域进行大型合并的时机已经成熟，在交易丰收的一年之后，可供选择的较小目标相对较少。根据彭博社汇编的数据，截至 12 月 31 日，已执行或待决交易的价值总计 378 亿美元。这些交易的价值超过了 2017 年以来的任何一年，当时包括壳牌在内的国际石油巨头。彭博社汇编的数据显示，康菲石油公司开始向当地公司出售油砂资产。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fce4ec;color:#c62828">国际</span>
+        <span class="meta">CNBC · Fri, 20 Feb 2026 19:59:07 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.cnbc.com/2026/02/20/oil-prices-trump-us-iran-conflict-strikes-energy.html" target="_blank" rel="noopener">Oil prices stable as Trump considers limited military strike against Iran</a></h3>
+      <p class="card-summary">在唐纳德·特朗普总统表示他正在考虑进行有限的军事打击以就伊朗核计划向伊朗施压后，周五油价保持稳定。 “我想我可以说我正在考虑这一点，”特朗普在白宫与美国州长举行的早餐会上被记者问到时说道。 4 月交割的国际基准布伦特原油期货上涨 10 美分，收于每桶 71.76 美元，而 3 月交割的美国西德克萨斯中质原油期货下跌 4 美分，收于每桶 66.39 美元。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e0f7fa;color:#00695c">天然气</span>
+        <span class="meta">NGI · Fri, 20 Feb 2026 19:49:30 +0000</span>
+      </div>
+      <h3 class="card-title"><a href="https://naturalgasintel.com/news/midday-snapshot-winter-revival-fails-to-boost-overall-natural-gas-cash-prices/" target="_blank" rel="noopener">MidDay Snapshot: Winter Revival Fails to Boost Overall Natural Gas Cash Prices</a></h3>
+      <p class="card-summary">截至周五下午早些时候，在新一轮寒冷的支撑下，东部和中西部的天然气现货价格上涨。但西部和德克萨斯州部分地区的价格下跌对全国平均水平造成了压力。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e0f7fa;color:#00695c">天然气</span>
+        <span class="meta">NGI · Fri, 20 Feb 2026 18:54:27 +0000</span>
+      </div>
+      <h3 class="card-title"><a href="https://naturalgasintel.com/news/vessel-traffic-limited-at-sabine-pass-lng-by-heavy-fog-forecast-through-weekend/" target="_blank" rel="noopener">Vessel Traffic Limited at Sabine Pass LNG by Heavy Fog Forecast Through Weekend</a></h3>
+      <p class="card-summary">由于预计周末有大雾，萨宾帕斯液化天然气 (Sabine Pass LNG) 的船舶交通有限，影响了液化天然气出口。航运通道周四关闭，预计到周六都有大雾。上周类似的情况导致美国出口减少。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e0f7fa;color:#00695c">天然气</span>
+        <span class="meta">NGI · Fri, 20 Feb 2026 18:45:00 +0000</span>
+      </div>
+      <h3 class="card-title"><a href="https://naturalgasintel.com/news/permian-plunge-pressures-natural-gas-forward-curve-as-northeast-premiums-fade/" target="_blank" rel="noopener">Permian Plunge Pressures Natural Gas Forward Curve as Northeast Premiums Fade</a></h3>
+      <p class="card-summary">西得克萨斯州定价的急剧崩溃和东北地区定价的温和正在考验远期曲线，暴露出供应密集的盆地和西部更为平衡的市场之间日益扩大的鸿沟。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fce4ec;color:#c62828">国际</span>
+        <span class="meta">CNBC · Fri, 20 Feb 2026 16:30:12 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.cnbc.com/2026/02/20/trump-could-attack-iran-in-days-whats-at-stake-for-the-oil-market.html" target="_blank" rel="noopener">Trump could attack Iran in days — what&#x27;s at stake for the oil market</a></h3>
+      <p class="card-summary">在最坏的情况下，美国和伊朗之间的全面战争可能会导致油价飙升并导致经济衰退。随着美国在中东大规模集结军事力量，美国总统唐纳德·特朗普周四表示，他将在未来 10 天内决定是否对伊朗发动打击。 Again Capital 创始人约翰·基尔达夫 (John Kilduff) 向 CNBC 表示：“伊朗的局势一直让这个市场感到恐惧。” “会有一些恶作剧......</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e8f5e9;color:#2e7d32">行业</span>
+        <span class="meta">Rigzone · Fri, 20 Feb 2026 15:13:37 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.rigzone.com/news/wire/surging_oil_tanker_rates_tipped_to_go_even_higher-20-feb-2026-183037-article/?rss=true" target="_blank" rel="noopener">Surging Oil Tanker Rates Tipped to Go Even Higher</a></h3>
+      <p class="card-summary">由于美国对伊朗发动重大袭击的风险越来越大，而且船只的所有权变得更加集中，雇用超级油轮的成本可能会达到十年来的最高水平。波罗的海交易所的数据显示，今年迄今为止，中东至中国航线上的一家超大型原油运输船的收入几乎增加了两倍，达到每天 151,208 美元，为 2020 年以来的最高水平。随着美国在中东集结军队，唐纳德·特朗普总统表示伊朗最多还有 10 到 15 天的时间……</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff3e0;color:#e65100">财经</span>
+        <span class="meta">Bloomberg · Fri, 20 Feb 2026 14:24:04 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxOS3Zpb2NTY3MyYmlObVBhWEVKU1hnQzNnYThmbFVwcWZxb2FVbkhabGpwVmN2UWxwWHl1VTQ3YzRiQ1ZjVGQ4Tm5xdzBia2hnYW9lamVwMnNadjdzbDFCdERXTXdFX3lrbUlDanZlNkFLZ3lFQmJHUkI4OEZpUTN3SWpYWkNmbEpZb25EQ0VLbnV5MVJOZnowSFRWZ2pjcEZ3S1ZzUlJIMXRxZkk?oc=5" target="_blank" rel="noopener">Canada’s Oil Sands Poised for Mega Merger After Busy 2025 - Bloomberg.com</a></h3>
+      <p class="card-summary">繁忙的 2025 年之后，加拿大油砂公司准备进行大规模合并 Bloomberg.com</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fce4ec;color:#c62828">国际</span>
+        <span class="meta">CNBC · Thu, 19 Feb 2026 20:14:49 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.cnbc.com/2026/02/19/trump-to-decide-whether-to-attack-iran-in-next-10-days-oil-prices-jump.html" target="_blank" rel="noopener">Trump to decide whether to attack Iran in next 10 days — oil prices rise</a></h3>
+      <p class="card-summary">美国总统特朗普周四表示，他将在未来10天内决定是否对伊朗发动军事打击。特朗普在和平委员会首次会议上表示：“所以现在我们可能必须更进一步，也可能不会。” “也许我们会达成协议。在接下来的 10 天内你就会知道了。”美国原油价格上涨1.24美元，涨幅1.9%，收于每桶66.43美元。全球基准布伦特原油价格上涨 1.31 美元，涨幅 1.86%，收于 71.66 美元。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e8f5e9;color:#2e7d32">行业</span>
+        <span class="meta">OGJ · Thu, 19 Feb 2026 18:28:53 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMi1AFBVV95cUxNaDdMRzNZUlJvb1EyM2pFaW1FalhPWlZJeXA5Qmp0ZDVaaHVRR3lzX3JHRE1aZ2IwbnlUWnBLQThxbDBCbDVkQmhsYlR0Z3VjaS1GdEhMVkMwM1M3UXpGZzdLenlzT1QyTFVHTVNONEZJODM0aURfWGRXV2MzRlFDTmoxdTlOeXlXWHlhNlFrWFZfM1RiQlo1aXBaLVlJOVQ3SVAtbHRneEpNeEVRTEZjMUQxUUNvVHI0WnhYMFl6QjE3SnZhYWt3bDI4MC1XZmhsb2syWg?oc=5" target="_blank" rel="noopener">Cameroon opens nine exploration opportunities spanning two proven oil, gas basins - Oil &amp; Gas Journal</a></h3>
+      <p class="card-summary">该轮许可包括位于活跃油田附近的九个先前钻探和地震覆盖的区块，并提供各种合同选项，勘探期......</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e8f5e9;color:#2e7d32">行业</span>
+        <span class="meta">World Oil · Thu, 19 Feb 2026 15:52:48 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxOZFkzTk1qTExVTkJGQm93SUEyUUhlSWtmQXJ5NV9SNHNxNEQtSlVpTmFPUUl0OUVNSjFDM2QzQVYxTVp1RkhtRU9PVUx0U1BSN21QQ0JQOW15cnplVlRYeERnUHpRMlVYN0dBbE5MdXoySEstUTN6c1BHeEp4N2IwdWZiMHFWak9lR1hSdzJRQjhsWlBpS0JiZVAxYnNhZy1WSzl1dzBOMDRfSW5kX09wSHhPZHltRmZvaXJNSkNraEpBWjlDVWg4NGZDOA?oc=5" target="_blank" rel="noopener">Nigeria orders NNPC to remit more oil, gas revenue to state accounts in major fiscal reform - World Oil</a></h3>
+      <p class="card-summary">尼日利亚已下令国有石油公司 NNPC 将更多来自生产共享合同的石油和天然气收入汇入联邦账户，取消关键扣除，此举旨在加强公共财政并重塑上游行业的财政政策。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff3e0;color:#e65100">财经</span>
+        <span class="meta">Bloomberg · Thu, 19 Feb 2026 08:45:07 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxQeXlpNmRyaFdrS0RZYlZQeGlaNWZ2d1lsWVlCakVlT251RWhWbGI4bGFwb2NwejdueEowX2NxNHgwb1BqSk1XM0Q1Z3pQak1iYjlBV1lSMEEtRS10WXR0RTVFVkxiemt3WE5BNzZCRG9DNzBId0l6Rkxfbm9rNkxrZWpoa3ZqVFpjbjd6U1ZPbmZFOU81U2JiV1BJNjFOSVVDU1g3U01hUVVoTGVPUmxnY3NnRDYycFdUeG9aQTRn?oc=5" target="_blank" rel="noopener">The White House Is Too Sure About Iran and Oil Prices - Bloomberg.com</a></h3>
+      <p class="card-summary">这是有充分理由的。白宫也应该注意这一点。仅仅因为唐纳德·特朗普总统去年轰炸了伊朗而没有导致油价飙升，并不意味着他可以再次这样做。几十年来，伊朗一直是全球地缘政治风险的纽带。它在石油流动中造成阻塞点的潜力在交易员的心中根深蒂固，霍尔木兹海峡构成了……市场尚未完全消化发生重大石油冲击的可能性。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff3e0;color:#e65100">财经</span>
+        <span class="meta">Bloomberg · Wed, 18 Feb 2026 11:26:23 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxPdHZpVEtzcmNUSnBZM0RsYUNEbEF3NXhFU2gxSGJzWnJ2WUUxWFFHd09EVUMtWW1GVXB0OGIybktITGhMS3FIaXJMV3RuM1VoeEh2WFJ6dUsxR3Fndll5QzVkd2d6ZUhGNFBvWkJJSm1SVkpDRm11TjVnVEpOSWlJNy1RVFBKc3Jya0IzQjFJeWtHd3ptdjJkOU5DaDFad1NwaWJaa0VHYUlQM2dyN2xxRks4RQ?oc=5" target="_blank" rel="noopener">Russia Cuts Oil Drilling as Money Dries Up, With Output at Risk - Bloomberg.com</a></h3>
+      <p class="card-summary">由于资金枯竭，俄罗斯削减石油钻探，产量面临风险 Bloomberg.com</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e8f5e9;color:#2e7d32">行业</span>
+        <span class="meta">World Oil · Tue, 17 Feb 2026 19:17:38 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMipwFBVV95cUxOdVBnQWxVR2gzYUROamhtbFd5VGtfLW5QYzdjNnFFa0lWZVVEUkRNTm9kNGh6Y05aTlhEOXVnblpPY0RYMlU1WW1qWUFUS2pRTVdBc0RQM3Bma3BhdVJ4TEdIS2dGNldPRkU4ZmR1SlJRalhpQ0FHZlRCTlJTdkN0Zk1CSHJFZGFtT0ZWSnlpOTFKVVY4aWJoZ2hEb3lSb3V2eFoxRDFVWQ?oc=5" target="_blank" rel="noopener">Eni makes major gas, condensate discovery offshore Côte d’Ivoire - World Oil</a></h3>
+      <p class="card-summary">埃尼公司在科特迪瓦近海 CI-501 区块的 Murene South-1X 井发现了大量天然气和凝析油，证实了卡劳海峡综合体的潜力。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e8f5e9;color:#2e7d32">行业</span>
+        <span class="meta">World Oil · Tue, 17 Feb 2026 19:03:05 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMiugFBVV95cUxNWk1UcWhnSTZtMnRmcE5IOVNiOGl1VkExUS1VdXhrekhmaldGZ2taZnU3ZXhZN0FPS3pkNFhkeHJ5UUROblM1Qk5vY3NRV0pvdjIwcFJOb2EzNTJHUUFGOEhWRmVGbThxNThkUWhIVXlsbUxpaFdlNkdJQWNkUzcxcWg2UVV5YW1WaFJqcnU5OC1ucnhZYldORi1pa2tjRmtJZmRNWFNIQ2Q1ZHJGRWdTa1VpbjZVZm14OHc?oc=5" target="_blank" rel="noopener">Regional Report: Focus on Arctic oil and gas sharpened during 2025 - World Oil</a></h3>
+      <p class="card-summary">来自政府和私营公司的越来越多的新举措旨在推动北极石油和天然气的勘探和开发。这些举措对北极的未来以及全球碳氢化合物的未来意味着什么？</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e8f5e9;color:#2e7d32">行业</span>
+        <span class="meta">World Oil · Tue, 17 Feb 2026 16:36:55 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxOWEFCeVl3TE96YlBrRmxTVWxiRVplZDJXenVicFFDSFVjaG05VVRTZU9Sc3ZqLUt6Y0g0WDVud0dLckN1bkxzRFpLem5RSVBpZmdHSzU5TWxONWhuMHZKLVRRMUs4WTJjamhoVVIwRGZNbXo0ZHJqZG5LVkt4bGxIVWx4ZU9MV25iXzBIRVdCUEFLeXUyUk1NajFIMTZ5SmZzMnVaeHBVcjZxREE5?oc=5" target="_blank" rel="noopener">Guyana advances second gas-to-shore project to diversify beyond oil - World Oil</a></h3>
+      <p class="card-summary">圭亚那正在推进第二个天然气到岸项目，从海上油田运输天然气用于发电和工业发展，支持其能源经济多元化（除石油之外）的努力。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e8f5e9;color:#2e7d32">行业</span>
+        <span class="meta">OGJ · Mon, 16 Feb 2026 17:23:33 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxNc3RxY2ZjUmZMSFJaWHo5UC1mRE5GSzVUXzdja3gzVUdZcklRMHd0SkxIUjQ3M1hpWDJuZUZhX2dyeHBYMFFjNzJDTUVURFZkbUF1RnN4VDI5YWVXWTZSM1VBNmxTQ3VfdDVNV2Ixbm1fTDZobkV6dzFBbFNCRjVhMDFueEh2RGxHck9BYUJpRmFTMTBBWHMwOTJJb2RMM3RBQlVqdDJpNlAxaVJvak1VMll5WF9JaklfZC1FdWxLV3VRRTBVaXc?oc=5" target="_blank" rel="noopener">Equinor discovers oil, gas at Granat prospect in North Sea - Oil &amp; Gas Journal</a></h3>
+      <p class="card-summary">此次勘探涉及从 Askeladden 钻机钻探的多口井，详细的地质数据表明储层物性为中等至良好。许可合作伙伴是...</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#f3e5f5;color:#6a1b9a">综合</span>
+        <span class="meta">OilGasPress · February 16, 2026</span>
+      </div>
+      <h3 class="card-title"><a href="https://oilandgaspress.com/reliance-gets-us-licence-to-directly-import-venezuelan-crude/" target="_blank" rel="noopener">Reliance gets US licence to directly import Venezuelan crude</a></h3>
+      <p class="card-summary">(Oilandgaspress) -] 穆克什·安巴尼领导的信实工业有限公司已获得美国直接购买委内瑞拉原油的通用许可证。该交易将帮助信实工业恢复进口符合其贾姆讷格尔炼油厂配置的折扣重质原料，并优化炼油利润。在通用许可证的帮助下，信实工业公司将能够直接从已经从地下开采或拥有石油的实体购买石油。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff3e0;color:#e65100">财经</span>
+        <span class="meta">Bloomberg · Fri, 13 Feb 2026 08:00:00 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMiggFBVV95cUxQM0V3enRvb3U2aWhycTNvUlB1YVJuSU1PZHRsSW0yaVhJZ0tieXB0SHlBTThpSV9iVHhKcmtieTFQYVFtY3E1dlNvV21KNHBlMnlUS0g1VFo5TmhObGRkOWVZbDQ0eWxtR0hpNmVwU3lsMEpuZGhVNHRlS1B0c2tfQVJn?oc=5" target="_blank" rel="noopener">Much of Cuba Goes Dark as Trump Chokes Oil Supply - Bloomberg.com</a></h3>
+      <p class="card-summary">特朗普切断石油供应，古巴大部分地区陷入黑暗 Bloomberg.com</p>
+    </article>
+  </main>
+
+  <footer>
+    全球实时油气新闻聚合 &copy; 2026
+  </footer>
+
+</body>
+</html>
