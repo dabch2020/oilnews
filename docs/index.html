@@ -198,7 +198,7 @@
         <span class="icon">&#x21bb;</span> 刷新
       </button>
     </div>
-    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-02-28 19:15（每小时自动刷新）</p>
+    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-02-28 20:16（每小时自动刷新）</p>
   </header>
 
   <div class="sources">
@@ -208,6 +208,14 @@
 
   <main class="container">
     <p class="stats">共聚合 29 条新闻</p>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fce4ec;color:#c62828">国际</span>
+        <span class="meta">CNBC · Sat, 28 Feb 2026 19:53:52 GMT</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.cnbc.com/2026/02/28/iran-us-attack-oil-market-economy.html" target="_blank" rel="noopener">How the attack on Iran could impact the global oil market and economy</a></h3>
+      <p class="card-summary">美国和以色列的袭击增加了石油供应严重中断的风险。伊朗是欧佩克第四大产油国，位于关键的霍尔木兹海峡。</p>
+    </article>
     <article class="card">
       <div class="card-header">
         <span class="badge" style="background:#fff3e0;color:#e65100">财经</span>
@@ -238,7 +246,7 @@
         <span class="meta">Oilprice · Sat, 28 Feb 2026 08:21:00 -0600</span>
       </div>
       <h3 class="card-title"><a href="https://oilprice.com/Energy/Crude-Oil/Oil-Markets-Brace-for-Impact-as-US-Israel-Attack-Iran.html" target="_blank" rel="noopener">World’s Most Critical Oil Route Under Operational Freeze</a></h3>
-      <p class="card-summary">1 分钟前中午 12:38 CST 霍尔木兹海峡交通缓慢，油轮在海峡两侧堆积 海上交通监测仪继续显示霍尔木兹海峡有动静。但在水道两侧都可以看到船只的聚集。彭博社的哈维尔·布拉斯报道称，两艘油轮原本打算穿过狭窄的水道，但其中一艘现在似乎已经掉头。由于保险公司今天早上决定不再承保通过霍尔木兹海峡的航程，因此大部分海上交通......</p>
+      <p class="card-summary">1m 前 1:38pm CST 伊朗冲突蔓延至海湾地区，哈梅内伊的不确定性自美国和以色列首次对伊朗发动袭击以来已近 12 小时，这场冲突正在影响越来越多的中东国家，并导致霍尔木兹海峡海上交通急剧放缓。 迄今为止事件的简要分析：对哈梅内伊命运的相互矛盾的说法：总理内塔尼亚胡表示，“有很多”迹象表明，在大规模的美以冲突之后，伊朗最高领袖已被消灭……</p>
     </article>
     <article class="card">
       <div class="card-header">
@@ -255,14 +263,6 @@
       </div>
       <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMiuwFBVV95cUxNOU9lZUIzVmdrUU5EeGZERmtxaENKMVRUNnJVMTkyaS1tS0VyTUt5WVYzRkJVTFNsWHQ1VE9MMW9HVTZITlNYY3kxYWt1ZWNHLWJfVVBnYTVXanVSYWxqUXhBbkw4dTVtWmtZOG4taGw0YldvN05Gc2o1TE45T3liY3EyRElFaUxpd2JkWTBySnNCYmt5MzdTWnM5NVA0Wnp1SkthS1dqcVVXaTVwWG1jNlUta3Q4R25BbXhR?oc=5" target="_blank" rel="noopener">What’s at Stake for Oil Markets as Trump Strikes Iran - Bloomberg.com</a></h3>
       <p class="card-summary">特朗普打击伊朗，石油市场面临什么风险 Bloomberg.com</p>
-    </article>
-    <article class="card">
-      <div class="card-header">
-        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
-        <span class="meta">Oilprice · Sat, 28 Feb 2026 01:17:00 -0600</span>
-      </div>
-      <h3 class="card-title"><a href="https://oilprice.com/Energy/Crude-Oil/Oil-Markets-Brace-for-Volatility-As-US-Israel-Launch-Strikes-Across-Iran.html" target="_blank" rel="noopener">Oil Markets Brace for Volatility As U.S.-Israel Launch Strikes Across Iran</a></h3>
-      <p class="card-summary">今天凌晨，美国和以色列协调一致对伊朗发动一波军事打击后，全球能源市场将出现大幅波动。这次袭击针对包括首都德黑兰在内的多个城市，标志着酝酿数月的地区冲突大幅升级。以色列国防部长以色列·卡茨证实，以色列全境进入紧急状态，这是一次“先发制人的打击”。美国官员称这次行动“不是一次小规模的袭击……</p>
     </article>
     <article class="card">
       <div class="card-header">
@@ -484,7 +484,7 @@
   };
 
   function pollForUpdate() {
-    var originalTime = '2026-02-28 19:15';
+    var originalTime = '2026-02-28 20:16';
     var attempts = 0;
     var maxAttempts = 24;  // 最多等 2 分钟 (24 x 5s)
     var timer = setInterval(function() {
