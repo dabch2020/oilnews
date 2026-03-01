@@ -198,7 +198,7 @@
         <span class="icon">&#x21bb;</span> 刷新
       </button>
     </div>
-    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-03-01 20:17（每小时自动刷新）</p>
+    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-03-01 21:15（每小时自动刷新）</p>
   </header>
 
   <div class="sources">
@@ -207,11 +207,19 @@
   </div>
 
   <main class="container">
-    <p class="stats">共聚合 31 条新闻</p>
+    <p class="stats">共聚合 32 条新闻</p>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
+        <span class="meta">Oilprice · Sun, 01 Mar 2026 15:00:00 -0600</span>
+      </div>
+      <h3 class="card-title"><a href="https://oilprice.com/Energy/Energy-General/Middle-Eastern-Oil-Giants-Accelerate-Multibillion-Dollar-Clean-Energy-Push.html" target="_blank" rel="noopener">Middle Eastern Oil Giants Accelerate Multibillion-Dollar Clean Energy Push</a></h3>
+      <p class="card-summary">一些中东国家已经出台了总体国家战略，旨在实现能源结构多元化，以减少对化石燃料的依赖，同时它们还寻求扩大经济，超越对石油和天然气收入的依赖。这导致阿拉伯联合酋长国（阿联酋）、沙特阿拉伯和卡塔尔等国家大力投资扩大其可再生能源和清洁技术产业。石油和天然气生产为多个中东国家提供了...</p>
+    </article>
     <article class="card">
       <div class="card-header">
         <span class="badge" style="background:#fce4ec;color:#c62828">国际</span>
-        <span class="meta">CNBC · Sun, 01 Mar 2026 19:55:10 GMT</span>
+        <span class="meta">CNBC · Sun, 01 Mar 2026 20:55:58 GMT</span>
       </div>
       <h3 class="card-title"><a href="https://www.cnbc.com/2026/03/01/crude-oil-futures-iran.html" target="_blank" rel="noopener">U.S. crude oil set to top $70 a barrel when trading begins on fears of Iran supply disruption</a></h3>
       <p class="card-summary">由于市场参与者担心美国和伊朗之间的战争将失控并导致严重的供应中断，预计周日晚间开盘时原油价格将上涨。美国和以色列对伊朗发动的大规模空袭导致伊朗最高领袖哈梅内伊和其他高级领导人丧生。在这里查看最新进展。</p>
@@ -500,7 +508,7 @@
   };
 
   function pollForUpdate() {
-    var originalTime = '2026-03-01 20:17';
+    var originalTime = '2026-03-01 21:15';
     var attempts = 0;
     var maxAttempts = 24;  // 最多等 2 分钟 (24 x 5s)
     var timer = setInterval(function() {
