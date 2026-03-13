@@ -37,6 +37,9 @@ from googlenewsdecoder import new_decoderv1
 logging.basicConfig(level=logging.INFO, format="%(levelname)s  %(message)s")
 log = logging.getLogger(__name__)
 
+# ── 时区 ──────────────────────────────────────────────────
+_BEIJING = timezone(timedelta(hours=8))
+
 # ── 请求配置 ──────────────────────────────────────────────
 HEADERS = {
     "User-Agent": (
@@ -383,9 +386,12 @@ def _fetch_cls_api(source: dict) -> list[dict]:
         depth_title = _clean(depth.get("title", "")) if isinstance(depth, dict) else ""
         # shareurl 作为链接
         link = item.get("shareurl", "")
-        # 时间戳转字符串
+        # 时间戳转字符串（财联社时间戳为 UTC epoch）
         ctime = item.get("ctime", 0)
-        pub_time = time.strftime("%Y-%m-%d %H:%M", time.localtime(ctime)) if ctime else ""
+        pub_time = (
+            datetime.fromtimestamp(ctime, tz=_BEIJING).strftime("%Y-%m-%d %H:%M %z")
+            if ctime else ""
+        )
         # 标题优先用 depth_title，否则用 title 或 content 前60字
         display_title = depth_title or title or content[:60]
         if not display_title:
@@ -561,12 +567,18 @@ def fetch_all(sources: list[dict] | None = None) -> list[dict]:
     # 有时间的排在前面（降序），无时间的排在最后
     filtered.sort(key=lambda n: n["_dt"] or datetime.min.replace(tzinfo=timezone.utc), reverse=True)
 
+    # 统一显示时间为北京时间格式
+    for n in filtered:
+        if n["_dt"]:
+            n["time"] = n["_dt"].astimezone(_BEIJING).strftime("%Y-%m-%d %H:%M")
+
     return filtered
 
 
 # ── 时间解析 ──────────────────────────────────────────────
 
 _TIME_FORMATS = [
+    "%Y-%m-%d %H:%M %z",
     "%Y-%m-%d %H:%M",
     "%Y-%m-%d %H:%M:%S",
     "%Y-%m-%dT%H:%M:%S",
@@ -697,7 +709,7 @@ def generate_html(news: list[dict] | None = None) -> str:
         news = fetch_all()
 
     cards_html = "\n".join(_news_card(n) for n in news)
-    now = datetime.now().strftime("%Y-%m-%d %H:%M")
+    now = datetime.now(_BEIJING).strftime("%Y-%m-%d %H:%M")
     total = len(news)
 
     return f"""\
