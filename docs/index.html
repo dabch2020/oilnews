@@ -198,7 +198,7 @@
         <span class="icon">&#x21bb;</span> 刷新
       </button>
     </div>
-    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-03-21 22:19（每小时自动刷新）</p>
+    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-03-21 23:18（每小时自动刷新）</p>
   </header>
 
   <div class="sources">
@@ -207,7 +207,15 @@
   </div>
 
   <main class="container">
-    <p class="stats">共聚合 34 条新闻</p>
+    <p class="stats">共聚合 33 条新闻</p>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
+        <span class="meta">Oilprice · 2026-03-21 23:01</span>
+      </div>
+      <h3 class="card-title"><a href="https://oilprice.com/Energy/Natural-Gas/Ras-Laffan-Attack-Shatters-Illusion-of-Global-Gas-Abundance.html" target="_blank" rel="noopener">Ras Laffan Attack Shatters Illusion of Global Gas Abundance</a></h3>
+      <p class="card-summary">过去两年，全球天然气市场的主流说法是“即将到来的供应充足”。每个人都警告即将到来的液化天然气海啸。市场分析师不断指出，新的液化天然气供应浪潮将主要由卡塔尔、美国、加拿大和非洲部分地区的扩张推动。他们清楚地认为，到 2020 年代末，世界将走向供过于求。大宗商品市场和分析师在算法和 Excel 表格的支持下，都预测价格将会下跌，灵活性......</p>
+    </article>
     <article class="card">
       <div class="card-header">
         <span class="badge" style="background:#fff3e0;color:#e65100">财经</span>
@@ -330,27 +338,11 @@
     </article>
     <article class="card">
       <div class="card-header">
-        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
-        <span class="meta">Oilprice · 2026-03-21 02:00</span>
-      </div>
-      <h3 class="card-title"><a href="https://oilprice.com/Energy/Crude-Oil/Norways-Output-Holds-Steadybut-Spare-Capacity-Is-Gone.html" target="_blank" rel="noopener">Norway’s Output Holds Steady—but Spare Capacity Is Gone</a></h3>
-      <p class="card-summary">根据挪威近海管理局的初步数据，2月份挪威石油产量下滑0.2%，与1月份相比，日产量小幅下降3,000桶，平均日产量为197万桶。产量比去年同期增加 262 kbpd，当时石油产量总计 170.8 万桶/日。上个月挪威大陆架液体总产量平均为217.6万桶/日，其中包括197万桶石油/日、18.8万桶天然气液体……</p>
-    </article>
-    <article class="card">
-      <div class="card-header">
         <span class="badge" style="background:#e0f7fa;color:#00695c">天然气</span>
         <span class="meta">NGI · 2026-03-21 01:47</span>
       </div>
       <h3 class="card-title"><a href="https://naturalgasintel.com/news/sheinbaum-vows-to-slash-mexicos-75-reliance-on-us-natural-gas-imports/" target="_blank" rel="noopener">Sheinbaum Vows to Slash Mexico’s 75% Reliance on U.S. Natural Gas Imports</a></h3>
       <p class="card-summary">随着世界努力应对国际能源署所说的“现代历史上最大的供应冲击”，美国向墨西哥的天然气供应出现了轻微的喘息。</p>
-    </article>
-    <article class="card">
-      <div class="card-header">
-        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
-        <span class="meta">Oilprice · 2026-03-21 01:21</span>
-      </div>
-      <h3 class="card-title"><a href="https://oilprice.com/Energy/Crude-Oil/US-Drillers-Add-Oil-Rigs-For-Second-Week-In-A-Row-As-Prices-Soar.html" target="_blank" rel="noopener">US Drillers Add Oil Rigs For Second Week In A Row As Prices Soar</a></h3>
-      <p class="card-summary">贝克休斯周五公布的新数据显示，本周美国活跃的石油和天然气钻机总数有所下降，使美国本周的活跃钻机总数达到 552 座，比去年同期减少 41 座。数据显示，在最近的报告期内，活跃石油钻井平台数量增加了 2 座，达到 414 座。这比去年同期低 72。天然气钻井数量减少2座，降至131座，比去年同期增加29座。错误…</p>
     </article>
     <article class="card">
       <div class="card-header">
@@ -524,7 +516,7 @@
   };
 
   function pollForUpdate() {
-    var originalTime = '2026-03-21 22:19';
+    var originalTime = '2026-03-21 23:18';
     var attempts = 0;
     var maxAttempts = 24;  // 最多等 2 分钟 (24 x 5s)
     var timer = setInterval(function() {
