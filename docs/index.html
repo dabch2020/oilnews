@@ -198,7 +198,7 @@
         <span class="icon">&#x21bb;</span> 刷新
       </button>
     </div>
-    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-03-22 23:18（每小时自动刷新）</p>
+    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-03-23 00:19（每小时自动刷新）</p>
   </header>
 
   <div class="sources">
@@ -207,7 +207,15 @@
   </div>
 
   <main class="container">
-    <p class="stats">共聚合 28 条新闻</p>
+    <p class="stats">共聚合 30 条新闻</p>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fce4ec;color:#c62828">国际</span>
+        <span class="meta">CNBC · 2026-03-23 00:02</span>
+      </div>
+      <h3 class="card-title"><a href="https://www.cnbc.com/2026/03/22/iran-war-strait-of-hormuz-trump-oil-prices-economy.html" target="_blank" rel="noopener">The economy has a Strait of Hormuz deadline for Trump: Two weeks</a></h3>
+      <p class="card-summary">企业高管并不对油价短期上涨和霍尔木兹海峡关闭感到恐慌，但耐心可能会在几周内消失。</p>
+    </article>
     <article class="card">
       <div class="card-header">
         <span class="badge" style="background:#fff3e0;color:#e65100">财经</span>
@@ -418,6 +426,14 @@
     </article>
     <article class="card">
       <div class="card-header">
+        <span class="badge" style="background:#e8f5e9;color:#2e7d32">行业</span>
+        <span class="meta">World Oil · 2026-03-17 22:09</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxOM0dVMWh6Z2djUjA1dVJHb1hQcUthRXlhdjJ0MVlMaUEtT0dXUVNaNndNVXp3V1ptMWtFa1FSNlk0cEIya2RVQnZpeVE3c25uVWUxTXBGUTRocXZrVFZFNk42R0JzOXNoRExuRm9SWmtoenpfQkswSVAtTnRGMy1zOWE1R3RIbno3eVpSNkxmQWdFckcxLUJRaEdTdV9hZ3FITTh1N0pDS0dzQQ?oc=5" target="_blank" rel="noopener">bp starts up Quiluma gas field in Angola, supplying Angola LNG project - World Oil</a></h3>
+      <p class="card-summary">英国石油公司已开始从安哥拉近海Quiluma油田生产天然气，作为新天然气联盟项目的一部分，该项目是该国第一个非伴生气开发项目，为安哥拉液化天然气设施提供出口原料。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
         <span class="badge" style="background:#e8eaf6;color:#283593">市场</span>
         <span class="meta">S&amp;P Platts · 2026-03-16 00:00</span>
       </div>
@@ -476,7 +492,7 @@
   };
 
   function pollForUpdate() {
-    var originalTime = '2026-03-22 23:18';
+    var originalTime = '2026-03-23 00:19';
     var attempts = 0;
     var maxAttempts = 24;  // 最多等 2 分钟 (24 x 5s)
     var timer = setInterval(function() {
