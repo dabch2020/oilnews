@@ -198,7 +198,7 @@
         <span class="icon">&#x21bb;</span> 刷新
       </button>
     </div>
-    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-04-12 02:31（每小时自动刷新）</p>
+    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-04-12 03:29（每小时自动刷新）</p>
   </header>
 
   <div class="sources">
@@ -207,7 +207,15 @@
   </div>
 
   <main class="container">
-    <p class="stats">共聚合 19 条新闻</p>
+    <p class="stats">共聚合 21 条新闻</p>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
+        <span class="meta">Oilprice · 2026-04-12 03:00</span>
+      </div>
+      <h3 class="card-title"><a href="https://oilprice.com/Energy/Energy-General/How-the-Iran-War-Could-Reignite-Global-EV-Demand.html" target="_blank" rel="noopener">How the Iran War Could Reignite Global EV Demand</a></h3>
+      <p class="card-summary">伊朗战争和更广泛的中东冲突使消费者和政策制定者更加意识到全球能源市场面临的脆弱性。由于供应链中断导致全球石油短缺，化石燃料的价格越来越高。随着世界各国政府评估他们的下一步行动，消费者似乎越来越多地转向电动汽车（EV）以减少对汽油的依赖。许多政府出台了旨在增强……的政策。</p>
+    </article>
     <article class="card">
       <div class="card-header">
         <span class="badge" style="background:#fff3e0;color:#e65100">财经</span>
@@ -346,6 +354,14 @@
     </article>
     <article class="card">
       <div class="card-header">
+        <span class="badge" style="background:#e8f5e9;color:#2e7d32">行业</span>
+        <span class="meta">Rigzone · 2026-04-02 20:32</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNNGo0X1g0QzBMWThxcW1zRmpwckdCMjJQSUkyNXRNZExNMjFqS1JNcDc5b1FfSG42NEcwVUVxanNXOG5RN0FiOGpPSVBVQzRZNGYwQWl1Y2tVNTg2Z2FKSFl4eUNEakhUaGs2R2xPNjlmRHptSTJZMXJ6OW9WTTNSd18xQkgwcWJ3VlRORS1kcnFaMUY2NXlDX3hpc0t5MTdMdFFSSUpiUWxWQ0Q5UzBIZVBB?oc=5" target="_blank" rel="noopener">StanChart Warns OPEC+ Could Abandon Cuts at Next Meeting - Rigzone</a></h3>
+      <p class="card-summary">渣打银行警告OPEC+可能在下次会议上放弃减产</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
         <span class="badge" style="background:#f3e5f5;color:#6a1b9a">综合</span>
         <span class="meta">OilGasPress · 2026-03-31 08:00</span>
       </div>
@@ -404,7 +420,7 @@
   };
 
   function pollForUpdate() {
-    var originalTime = '2026-04-12 02:31';
+    var originalTime = '2026-04-12 03:29';
     var attempts = 0;
     var maxAttempts = 24;  // 最多等 2 分钟 (24 x 5s)
     var timer = setInterval(function() {
