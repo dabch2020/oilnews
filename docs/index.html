@@ -198,7 +198,7 @@
         <span class="icon">&#x21bb;</span> 刷新
       </button>
     </div>
-    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-05-17 04:41（每小时自动刷新）</p>
+    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-05-17 05:39（每小时自动刷新）</p>
   </header>
 
   <div class="sources">
@@ -207,7 +207,15 @@
   </div>
 
   <main class="container">
-    <p class="stats">共聚合 24 条新闻</p>
+    <p class="stats">共聚合 25 条新闻</p>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
+        <span class="meta">Oilprice · 2026-05-17 05:00</span>
+      </div>
+      <h3 class="card-title"><a href="https://oilprice.com/Energy/Crude-Oil/Big-Oil-Rushes-Into-Argentinas-Vaca-Muerta-Shale.html" target="_blank" rel="noopener">Big Oil Rushes Into Argentina’s Vaca Muerta Shale</a></h3>
+      <p class="card-summary">随着中东危机和霍尔木兹海峡封锁重新引发全球范围内争夺冲突地区以外资源的竞赛，当地和国际能源公司正在阿根廷瓦卡穆尔塔页岩盆地争夺更多勘探区块。直到几年前，页岩气勘探和生产仍主要是美国业务，但现在在北美以外地区的发展势头正在增强。阿根廷的 Vaca Muerta 在包括美国页岩巨头在内的石油和天然气公司名单中名列前茅，因为……</p>
+    </article>
     <article class="card">
       <div class="card-header">
         <span class="badge" style="background:#fff3e0;color:#e65100">财经</span>
@@ -258,6 +266,14 @@
     </article>
     <article class="card">
       <div class="card-header">
+        <span class="badge" style="background:#e8f5e9;color:#2e7d32">行业</span>
+        <span class="meta">OGJ · 2026-05-16 08:12</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMi2gFBVV95cUxQSmtJOGpqcTh0eE1GWFNleWd2a2dTRS1uZzgwTmtNLVlTLU1SZkJvSXFTYTNBRm9Sbmp5NUk5LWxyei15TXBBTUhURVBvVmFBOVp0bXdDcjRQd2RWWjB2Zm5jRTUxaEE1azJING0zSElfdmx4WUxNSlJWc0ZQYlFRSmFEdVZoOUJfejNVcmpUdXJkY3k4X0s5cHB1WEhSWUdHcEJBTXFWVlVYR1NNcldVZ0NmeGJ5NzRxX1FaN0pJZ1NGdzVpY29TNFZkNXVBLU80MnNZYjRGeVQtZw?oc=5" target="_blank" rel="noopener">Poll results: Timeline to replace oil, gas supply lost from Iran war - Oil &amp; Gas Journal</a></h3>
+      <p class="card-summary">最近的一项民意调查显示，业界对伊朗战争破坏后恢复石油和天然气供应的时间表存在不同看法。许多人认为复苏可能会在...</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
         <span class="badge" style="background:#e0f7fa;color:#00695c">天然气</span>
         <span class="meta">NGI · 2026-05-16 05:24</span>
       </div>
@@ -271,14 +287,6 @@
       </div>
       <h3 class="card-title"><a href="https://naturalgasintel.com/news/natural-gas-traders-begin-pricing-in-summer-risk/" target="_blank" rel="noopener">Natural Gas Traders Begin Pricing in Summer Risk</a></h3>
       <p class="card-summary">纽约商业交易所 (NYMEX) 6 月天然气期货周五收高，并因天气变暖而提振了需求降温的预期，周度上涨。</p>
-    </article>
-    <article class="card">
-      <div class="card-header">
-        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
-        <span class="meta">Oilprice · 2026-05-16 02:30</span>
-      </div>
-      <h3 class="card-title"><a href="https://oilprice.com/Latest-Energy-News/World-News/Canada-Clears-Path-for-West-Coast-Oil-Pipeline-Build.html" target="_blank" rel="noopener">Canada Clears Path for West Coast Oil Pipeline Build</a></h3>
-      <p class="card-summary">加拿大政府和艾伯塔省已达成碳定价协议，最终可能将讨论已久的西海岸石油管道从加拿大永久的争论转变为实际建设，目前开工日期最早预计为 2027 年 9 月。对加拿大来说，这是有意义的进展。马克·卡尼总理和艾伯塔省省长丹妮尔·史密斯周五宣布了该协议，该协议以 11 月备忘录为基础，该备忘录规定了联邦支持原油管道的条件，该管道能够……</p>
     </article>
     <article class="card">
       <div class="card-header">
@@ -444,7 +452,7 @@
   };
 
   function pollForUpdate() {
-    var originalTime = '2026-05-17 04:41';
+    var originalTime = '2026-05-17 05:39';
     var attempts = 0;
     var maxAttempts = 24;  // 最多等 2 分钟 (24 x 5s)
     var timer = setInterval(function() {
