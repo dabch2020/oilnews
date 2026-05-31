@@ -198,7 +198,7 @@
         <span class="icon">&#x21bb;</span> 刷新
       </button>
     </div>
-    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-06-01 04:50（每小时自动刷新）</p>
+    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-06-01 05:51（每小时自动刷新）</p>
   </header>
 
   <div class="sources">
@@ -208,6 +208,14 @@
 
   <main class="container">
     <p class="stats">共聚合 21 条新闻</p>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
+        <span class="meta">Oilprice · 2026-06-01 05:00</span>
+      </div>
+      <h3 class="card-title"><a href="https://oilprice.com/Energy/Energy-General/The-Iran-Wars-First-90-Days-Upended-Energy-Markets.html" target="_blank" rel="noopener">The Iran War’s First 90 Days Upended Energy Markets</a></h3>
+      <p class="card-summary">伊朗战争突然将全球石油和液化天然气市场原本一年的供应过剩变成了历史上最严重的石油和天然气供应中断。自2月28日美以对伊朗发动打击三个月后，全球已经损失了10亿桶原油供应，石油和天然气价格找到了新的、更高的底部，几乎每天都剧烈波动，贸易路线发生了变化，油轮运价飙升。实际的供应短缺正在出现……</p>
+    </article>
     <article class="card">
       <div class="card-header">
         <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
@@ -223,14 +231,6 @@
       </div>
       <h3 class="card-title"><a href="https://oilprice.com/Energy/Crude-Oil/Chinas-Oil-Buying-Pause-Wont-Last-Forever.html" target="_blank" rel="noopener">China’s Oil Buying Pause Won’t Last Forever</a></h3>
       <p class="card-summary">中国被视为成功抵御石油危机的一个例子。中东战争爆发前，中国的库存估计超过十亿桶，是能源安全前瞻性规划的典型代表。但这种情况可能会改变，如果真的发生了，将使本已严重的危机变得更加严重。克普勒本月早些时候对这种前景发出了警报，报道称中国炼油商已经减少了……的采购。</p>
-    </article>
-    <article class="card">
-      <div class="card-header">
-        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
-        <span class="meta">Oilprice · 2026-05-31 05:00</span>
-      </div>
-      <h3 class="card-title"><a href="https://oilprice.com/Energy/Natural-Gas/Americas-LNG-Boom-Is-Real-But-China-Is-Planning-Beyond-It.html" target="_blank" rel="noopener">America’s LNG Boom Is Real — But China Is Planning Beyond It</a></h3>
-      <p class="card-summary">伊朗战争给了美国一个难得的机会：在日益分裂的世界中获得能源主导地位的新曙光。自 2 月下旬起，美国和以色列协调一致的袭击扰乱了霍尔木兹海峡，自 3 月初以来，全球约 20% 的液化天然气供应已从市场上消失。亚洲和欧洲的价格飙升。美国天然气流入了这个真空。数字不言而喻。 4月份美国对亚洲的液化天然气出口大幅增长，近四分之一……</p>
     </article>
     <article class="card">
       <div class="card-header">
@@ -420,7 +420,7 @@
   };
 
   function pollForUpdate() {
-    var originalTime = '2026-06-01 04:50';
+    var originalTime = '2026-06-01 05:51';
     var attempts = 0;
     var maxAttempts = 24;  // 最多等 2 分钟 (24 x 5s)
     var timer = setInterval(function() {
