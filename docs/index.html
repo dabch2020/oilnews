@@ -198,7 +198,7 @@
         <span class="icon">&#x21bb;</span> 刷新
       </button>
     </div>
-    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-06-20 01:49（每小时自动刷新）</p>
+    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-06-20 03:26（每小时自动刷新）</p>
   </header>
 
   <div class="sources">
@@ -207,7 +207,15 @@
   </div>
 
   <main class="container">
-    <p class="stats">共聚合 21 条新闻</p>
+    <p class="stats">共聚合 22 条新闻</p>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
+        <span class="meta">Oilprice · 2026-06-20 02:30</span>
+      </div>
+      <h3 class="card-title"><a href="https://oilprice.com/Latest-Energy-News/World-News/Israel-and-Hezbollah-Truce-Gives-Oil-Markets-a-Reason-to-Pause.html" target="_blank" rel="noopener">Israel and Hezbollah Truce Gives Oil Markets a Reason to Pause</a></h3>
+      <p class="card-summary">中东最新的和平协议刚刚达成了自己的和平协议。以色列和真主党周五同意停止黎巴嫩南部的战斗，此前几天不断升级的冲突可能会破坏脆弱的美伊和平进程，从而降低了美伊协议的第一次重大考验演变成第一次重大失败的风险。华盛顿和德黑兰之间的谈判应该根据一项为期 60 天的框架协议开始，该协议旨在结束战争、重新开放霍尔木兹海峡，以及……</p>
+    </article>
     <article class="card">
       <div class="card-header">
         <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
@@ -420,7 +428,7 @@
   };
 
   function pollForUpdate() {
-    var originalTime = '2026-06-20 01:49';
+    var originalTime = '2026-06-20 03:26';
     var attempts = 0;
     var maxAttempts = 24;  // 最多等 2 分钟 (24 x 5s)
     var timer = setInterval(function() {
