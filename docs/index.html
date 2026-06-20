@@ -198,7 +198,7 @@
         <span class="icon">&#x21bb;</span> 刷新
       </button>
     </div>
-    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-06-21 03:10（每小时自动刷新）</p>
+    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-06-21 05:05（每小时自动刷新）</p>
   </header>
 
   <div class="sources">
@@ -207,7 +207,23 @@
   </div>
 
   <main class="container">
-    <p class="stats">共聚合 17 条新闻</p>
+    <p class="stats">共聚合 20 条新闻</p>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
+        <span class="meta">Oilprice · 2026-06-21 05:00</span>
+      </div>
+      <h3 class="card-title"><a href="https://oilprice.com/Alternative-Energy/Renewable-Energy/Energy-Security-Not-Climate-Goals-Is-Now-Driving-the-Clean-Power-Boom.html" target="_blank" rel="noopener">Energy Security, Not Climate Goals, Is Now Driving the Clean Power Boom</a></h3>
+      <p class="card-summary">尽管在几个月的几乎完全关闭之后，霍尔木兹海峡的船只开始缓缓驶过，但今年能源危机的影响要从全球经济中消退（如果真的会消退的话）还需要很长时间。全球石油和天然气市场的最新一轮动荡在一定程度上促进了清洁能源的采用，这可能会永久改变全球能源格局以及我们对能源安全和地缘政治战略的构想。非常能说明问题的是，……</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
+        <span class="meta">Oilprice · 2026-06-21 03:30</span>
+      </div>
+      <h3 class="card-title"><a href="https://oilprice.com/Latest-Energy-News/World-News/Iraq-Is-Keeping-Its-Syria-Oil-RouteEven-If-Hormuz-Reopens.html" target="_blank" rel="noopener">Iraq Is Keeping Its Syria Oil Route—Even If Hormuz Reopens</a></h3>
+      <p class="card-summary">没有人，尤其是伊拉克，愿意再次依赖霍尔木兹。伊拉克正准备通过叙利亚地中海港口巴尼亚斯出口原油和石脑油，扩大霍尔木兹海峡关闭扰乱该国主要出口路线并导致储罐装满后出现的紧急解决方案。据路透社报道，伊拉克官员表示，即使霍尔木兹海峡的航运恢复正常，该战略也将继续存在。仅此一点就说明了很多。我…</p>
+    </article>
     <article class="card">
       <div class="card-header">
         <span class="badge" style="background:#fce4ec;color:#c62828">国际</span>
@@ -295,6 +311,14 @@
       </div>
       <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMisAFBVV95cUxOM0ZPN3Z1SFgxalpvMjlwT28xMm4xNDBsbGtvR211b2ExUDRIWEpwZldZRzRDbDBjZDJiWUo4SkwwUHpWTnpGT1FSWmNwYmZDdzlNYUU5bVhOWE1WZmg5RmZYMzh2ZGVmaHJFcEFUVWIzbEM5a2pIeG4zTHhWNmZLVWg2STNNS09QQ3lHM1d4RUZ5OGp4dnAtNmVkME45OW9lVTEzSzBWVU5QMHJFV2Zadg?oc=5" target="_blank" rel="noopener">How an Oil Outsider Became Shale’s Staunchest Defender - Bloomberg.com</a></h3>
       <p class="card-summary">一位石油局外人如何成为页岩气最坚定的捍卫者 Bloomberg.com</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff3e0;color:#e65100">财经</span>
+        <span class="meta">Bloomberg · 2026-06-17 06:03</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMinwFBVV95cUxNLVBBX2ljTmlVSnNVQ1F6V2pDT3BSYVN5WTNnQ0xLV3VEN21zMzdkTFFUc1NSaVpYb3V1VlFlZkphMGxURzM0OEN3R1VDelhQRVZFY1JkX1VFR0FUMFdUSThzV0R5bEk3YlZocGRBNWtkUkVRcURFaWtzeEtnemlVMnh5M1NFQVJ4d0NfeE5EVnllQzI5X2hMZFhJOHk0X00?oc=5" target="_blank" rel="noopener">Oil Tumbles to Fresh Three-Month Low on Hormuz Reopening Trade - Bloomberg.com</a></h3>
+      <p class="card-summary">霍尔木兹海峡重新开放交易，油价跌至三个月新低 Bloomberg.com</p>
     </article>
     <article class="card">
       <div class="card-header">
@@ -388,7 +412,7 @@
   };
 
   function pollForUpdate() {
-    var originalTime = '2026-06-21 03:10';
+    var originalTime = '2026-06-21 05:05';
     var attempts = 0;
     var maxAttempts = 24;  // 最多等 2 分钟 (24 x 5s)
     var timer = setInterval(function() {
