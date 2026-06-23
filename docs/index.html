@@ -198,7 +198,7 @@
         <span class="icon">&#x21bb;</span> 刷新
       </button>
     </div>
-    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-06-24 05:24（每小时自动刷新）</p>
+    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-06-24 06:59（每小时自动刷新）</p>
   </header>
 
   <div class="sources">
@@ -207,7 +207,23 @@
   </div>
 
   <main class="container">
-    <p class="stats">共聚合 19 条新闻</p>
+    <p class="stats">共聚合 20 条新闻</p>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
+        <span class="meta">Oilprice · 2026-06-24 06:00</span>
+      </div>
+      <h3 class="card-title"><a href="https://oilprice.com/Energy/Energy-General/Trump-Admin-Takes-Aim-at-Oil-Gas-Drilling-Costs.html" target="_blank" rel="noopener">Trump Admin Takes Aim at Oil, Gas Drilling Costs</a></h3>
+      <p class="card-summary">美国联邦政府将通过削减该行业的繁文缛节来降低石油和天然气钻探商的成本，旨在吸引钻探商在联邦土地上扩张。在本周发布的新闻中，内政部表示将修订土地管理局关于石油和天然气钻探联邦土地租赁的规则以及土地管理局的废物预防规则，从根本上放松这两项规则，以减轻能源公司的成本负担。根据修订后的规则，废弃的清理成本......</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e0f7fa;color:#00695c">天然气</span>
+        <span class="meta">NGI · 2026-06-24 05:56</span>
+      </div>
+      <h3 class="card-title"><a href="https://naturalgasintel.com/news/florida-heat-lifts-cash-natural-gas-even-as-southeast-premiums-unravel/" target="_blank" rel="noopener">Florida Heat Lifts Cash Natural Gas Even as Southeast Premiums Unravel</a></h3>
+      <p class="card-summary">周二，现金天然气价格涨跌互现，佛罗里达州和德克萨斯州的上涨超过了几个东南部中心的大幅下跌，帮助提升了 NGI 的现货天然气全国平均价格。周三天然气输送。</p>
+    </article>
     <article class="card">
       <div class="card-header">
         <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
@@ -262,15 +278,7 @@
         <span class="meta">NGI · 2026-06-24 01:23</span>
       </div>
       <h3 class="card-title"><a href="https://naturalgasintel.com/news/permian-is-evidence-of-flaring-reduction-economic-opportunity-world-bank-says/" target="_blank" rel="noopener">Permian Is Evidence of Flaring Reduction, Economic Opportunity, World Bank Says</a></h3>
-      <p class="card-summary">了解世界银行关于二叠纪盆地天然气火炬减少和经济机遇的最新调查结果。了解美国如何将火炬燃烧量减少 7%、新管道基础设施的影响以及对全球天然气生产和定价趋势的见解。探索改善天然气管理和能源市场监管进步的可行策略。</p>
-    </article>
-    <article class="card">
-      <div class="card-header">
-        <span class="badge" style="background:#e0f7fa;color:#00695c">天然气</span>
-        <span class="meta">NGI · 2026-06-24 00:08</span>
-      </div>
-      <h3 class="card-title"><a href="https://naturalgasintel.com/news/natural-gas-prices-lose-steam-amid-competing-fundamentals/" target="_blank" rel="noopener">Natural Gas Prices Lose Steam Amid Competing Fundamentals</a></h3>
-      <p class="card-summary">纽约商品交易所天然气期货周二中午下跌，交易商在美国健康的供应和伊朗战争的不确定性与迫在眉睫的国内需求降温和对美国液化天然气的稳定需求之间进行平衡。</p>
+      <p class="card-summary">根据世界银行的一项新研究，到 2025 年，全球天然气燃烧量为 167 Bcm，“错失了历史规模的机会”。</p>
     </article>
     <article class="card">
       <div class="card-header">
@@ -404,7 +412,7 @@
   };
 
   function pollForUpdate() {
-    var originalTime = '2026-06-24 05:24';
+    var originalTime = '2026-06-24 06:59';
     var attempts = 0;
     var maxAttempts = 24;  // 最多等 2 分钟 (24 x 5s)
     var timer = setInterval(function() {
