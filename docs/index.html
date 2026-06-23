@@ -198,7 +198,7 @@
         <span class="icon">&#x21bb;</span> 刷新
       </button>
     </div>
-    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-06-23 10:26（每小时自动刷新）</p>
+    <p class="subtitle">实时聚合 10 大油气行业权威媒体 · 最后更新：2026-06-23 14:40（每小时自动刷新）</p>
   </header>
 
   <div class="sources">
@@ -207,7 +207,15 @@
   </div>
 
   <main class="container">
-    <p class="stats">共聚合 20 条新闻</p>
+    <p class="stats">共聚合 23 条新闻</p>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#fff8e1;color:#f57f17">油价</span>
+        <span class="meta">Oilprice · 2026-06-23 13:30</span>
+      </div>
+      <h3 class="card-title"><a href="https://oilprice.com/Latest-Energy-News/World-News/Oil-Prices-Continue-to-Slide-as-Peace-Talks-Progress.html" target="_blank" rel="noopener">Oil Prices Continue to Slide as Peace Talks Progress</a></h3>
+      <p class="card-summary">由于有报道称美国和伊朗的和平谈判取得进展，原油价格今天延续跌势，截至撰写本文时，布伦特原油跌至每桶 77.51 美元，西德克萨斯中质原油跌至每桶 73.62 美元。谈判桌上的最新消息包括一份报告称，美国将在本月早些时候商定的停止敌对行动的 60 天期限内免除对伊朗石油工业的制裁。双方还就...</p>
+    </article>
     <article class="card">
       <div class="card-header">
         <span class="badge" style="background:#fce4ec;color:#c62828">国际</span>
@@ -255,6 +263,14 @@
       </div>
       <h3 class="card-title"><a href="https://www.cnbc.com/2026/06/22/oil-prices-wti-brent-crude-trump-iran-threat-strait-hormuz-closure.html" target="_blank" rel="noopener">Oil prices fall after U.S. authorizes Iranian crude sales</a></h3>
       <p class="card-summary">在瑞士度假胜地布尔根施托克举行的讨论标志着华盛顿和德黑兰上周签署谅解备忘录以来的首次谈判。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e8f5e9;color:#2e7d32">行业</span>
+        <span class="meta">World Oil · 2026-06-23 03:27</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOX21ISGlxcHVkb1pLajJtYVVndG51UDZxa1EzejNMYmJCamlRWW45TnpObW00M0dhb050TjB5ajBnSnktZ094SVRRSEtHbk5QVlo5TENiMGRDWVlxcGhHZl9mQXgxbGFGTGo0bUFxTjVmSzlWOWZ5a0tHSmZFZHlsWHVrR25MUENWTW1ydHoyTndTMVI1MFRWNzktVUxQVlht?oc=5" target="_blank" rel="noopener">DOI targets Biden-era oil and gas bonding rule in new proposal - World Oil</a></h3>
+      <p class="card-summary">美国内政部提议修订联邦石油和天然气租赁和废物预防法规，包括降低粘合要求并减少与联邦土地上的通风、燃烧和许可相关的合规义务。</p>
     </article>
     <article class="card">
       <div class="card-header">
@@ -311,6 +327,14 @@
       </div>
       <h3 class="card-title"><a href="https://naturalgasintel.com/news/south-korean-shipbuilder-backs-early-stage-lng-export-push-for-canadian-natural-gas/" target="_blank" rel="noopener">South Korean Shipbuilder Backs Early-Stage LNG Export Push for Canadian Natural Gas</a></h3>
       <p class="card-summary">不列颠哥伦比亚省鲁珀特王子港的一个项目开发商正在努力推进与韩国主要造船商和浮动码头制造商之一韩华海洋的合作伙伴关系，以恢复液化天然气出口的机会。</p>
+    </article>
+    <article class="card">
+      <div class="card-header">
+        <span class="badge" style="background:#e8f5e9;color:#2e7d32">行业</span>
+        <span class="meta">Rigzone · 2026-06-23 00:02</span>
+      </div>
+      <h3 class="card-title"><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxOaEpIRm5YSzdCTC1iYVpJTEpmM1otTl9CVnY3eVZURURFbGFvV3hmNUl3ek56V0FiRm56U2w3VjF6V3l3N1dmSDY4LThRa1VZNHNRNFN6MUMxcC1WYWlvN0JmYWJERkxWb0tpMnRCQ05DT2w2TnlQSllDVmhVbXVmalJISEluVGtDbGZKbm5neWtTZkhKYk1fenRsZnFLaklQ?oc=5" target="_blank" rel="noopener">Iran Gets Oil Trading Respite from US - Rigzone</a></h3>
+      <p class="card-summary">伊朗从美国钻井平台获得石油贸易喘息机会</p>
     </article>
     <article class="card">
       <div class="card-header">
@@ -412,7 +436,7 @@
   };
 
   function pollForUpdate() {
-    var originalTime = '2026-06-23 10:26';
+    var originalTime = '2026-06-23 14:40';
     var attempts = 0;
     var maxAttempts = 24;  // 最多等 2 分钟 (24 x 5s)
     var timer = setInterval(function() {
