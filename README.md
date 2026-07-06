@@ -26,3 +26,5 @@
 - 摘要自动翻译为简体中文
 - 仅显示最近 2 周新闻，按时间倒序排列
 - GitHub Actions 每小时自动更新
+- 页面“刷新”按钮仅刷新当前页面缓存，不直接调用 GitHub API
+- 如需立即更新，可在 Actions 页面手动运行 `Update Oil & Gas News`

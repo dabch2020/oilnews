@@ -931,64 +931,17 @@ def generate_html(news: list[dict] | None = None) -> str:
   </footer>
 
   <script>
-  var _a='github_pat_11AP5KOUY0';
-  var _b='dNQq2x013K8F_sH4Fqnd';
-  var _c='JtVwfBfOEgy9pxWUQGMmU';
-  var _d='VeDdNx7E2QrLeqCZ5OD46NQhjvEPn5Q';
-  var DISPATCH_TOKEN = _a+_b+_c+_d;
-  var REPO = 'dabch2020/oilnews';
+    var ACTIONS_URL = 'https://github.com/dabch2020/oilnews/actions/workflows/update_news.yml';
   var btn = document.querySelector('.btn-refresh');
   var subtitleSpan = document.querySelector('.subtitle');
 
   btn.onclick = function() {{
     btn.classList.add('loading');
-    subtitleSpan.textContent = '正在触发后台更新，请稍候约1-2分钟…';
-
-    fetch('https://api.github.com/repos/' + REPO + '/dispatches', {{
-      method: 'POST',
-      headers: {{
-        'Authorization': 'Bearer ' + DISPATCH_TOKEN,
-        'Accept': 'application/vnd.github.v3+json'
-      }},
-      body: JSON.stringify({{ event_type: 'refresh' }})
-    }})
-    .then(function(r) {{
-      if (r.status === 204 || r.status === 200) {{
-        subtitleSpan.textContent = '✅ 已触发更新，正在等待构建完成…';
-        pollForUpdate();
-      }} else {{
-        subtitleSpan.textContent = '❌ 触发失败 (HTTP ' + r.status + ')';
-        btn.classList.remove('loading');
-      }}
-    }})
-    .catch(function(e) {{
-      subtitleSpan.textContent = '❌ 网络错误，请稍后重试';
-      btn.classList.remove('loading');
-    }});
+        subtitleSpan.innerHTML = '正在刷新页面…（后台每小时自动更新；如需立刻更新请到 <a href="' + ACTIONS_URL + '" target="_blank" rel="noopener">GitHub Actions</a> 手动触发）';
+        setTimeout(function() {{
+            location.href = location.href.split('?')[0] + '?_t=' + Date.now();
+        }}, 250);
   }};
-
-  function pollForUpdate() {{
-    var originalTime = '{now}';
-    var attempts = 0;
-    var maxAttempts = 24;  // 最多等 2 分钟 (24 x 5s)
-    var timer = setInterval(function() {{
-      attempts++;
-      fetch(location.href.split('?')[0] + '?_t=' + Date.now())
-        .then(function(r) {{ return r.text(); }})
-        .then(function(html) {{
-          var m = html.match(/最后更新：([^\uff08]+)/);
-          if (m && m[1].trim() !== originalTime) {{
-            clearInterval(timer);
-            location.reload();
-          }} else if (attempts >= maxAttempts) {{
-            clearInterval(timer);
-            subtitleSpan.textContent = '✅ 构建已触发，请稍后手动刷新页面';
-            btn.classList.remove('loading');
-          }}
-        }})
-        .catch(function() {{}});
-    }}, 5000);
-  }}
   </script>
 
 </body>
